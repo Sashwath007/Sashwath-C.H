@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Quiz</title>
+</head>
+<body>
+
+    <h2>Create Question</h2>
+
+    <input type="text" id="question" placeholder="Enter Question"><br><br>
+
+    <input type="text" id="opt1" placeholder="Option A"><br>
+    <input type="text" id="opt2" placeholder="Option B"><br>
+    <input type="text" id="opt3" placeholder="Option C"><br>
+    <input type="text" id="opt4" placeholder="Option D"><br><br>
+
+    <input type="text" id="answer" placeholder="Correct Answer (A/B/C/D)"><br><br>
+
+    <button onclick="saveQuestion()">Save Question</button>
+    <button onclick="startQuiz()">Start Quiz</button>
+
+    <script>
+        function saveQuestion() {
+            let question = document.getElementById("question").value;
+            let opt1 = document.getElementById("opt1").value;
+            let opt2 = document.getElementById("opt2").value;
+            let opt3 = document.getElementById("opt3").value;
+            let opt4 = document.getElementById("opt4").value;
+            let answer = document.getElementById("answer").value;
+
+            if (!question || !opt1 || !opt2 || !opt3 || !opt4 || !answer) {
+                alert("Fill all fields");
+                return;
+            }
+
+            let quiz = JSON.parse(localStorage.getItem("quiz")) || [];
+
+            quiz.push({
+                question: question,
+                options: [opt1, opt2, opt3, opt4],
+                answer: answer
+            });
+
+            localStorage.setItem("quiz", JSON.stringify(quiz));
+
+            alert("Question Saved!");
+        }
+
+        function startQuiz() {
+            window.location.href = "quiz.html";
+        }
+    </script>
+
+</body>
+</html>
