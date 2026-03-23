@@ -11,7 +11,6 @@ This is a simple online quiz web application where users can create their own qu
 
 ## 🛠️ Technologies Used
 - HTML
-- JavaScript
 - LocalStorage (for data storage)
 
 ## 📂 Project Modules
