@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <h1 class="logo">🏆 Leaderboard</h1>
+
+    <div class="card">
+        <ul id="list"></ul>
+    </div>
+
+    <a href="index.html"><button>⬅ Back</button></a>
+
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("leaderboard")) || [];
+let list = document.getElementById("list");
+
+data.forEach((p, i) => {
+    let li = document.createElement("li");
+    li.innerText = (i+1) + ". " + p.name + " - " + p.score;
+    list.appendChild(li);
+});
+</script>
+
+</body>
+</html>
